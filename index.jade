@@ -9,7 +9,7 @@ head
 body
 	header
 		h1 No More Popcorns
-		h2 Find the perfect recipe for your movie night
+		h2 Find the perfect food for your movie night
 	main
 		div.container
 			label(for='film') What are you watching?
@@ -27,8 +27,12 @@ body
 				option(value="Beverages") Beverages
 				option(value="Cocktails") Cocktails
 			button(id='searchButton') Thrill Me
-		div.container
-			div#recipe
-				
+		section.container#recipe
+			
+			// each recipe is wrapped in <> has an class of '.recipeContainer'
+			// '.recipeContainer' contains an img and
+			// name of the recipe ('.caption')
+			// in the long run, it should expand to show entire recipe extracted from yummly
+
 	script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 	script(type='text/javascript', src="js/app.js")

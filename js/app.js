@@ -6,7 +6,7 @@ ffApp.foodKey = '8711f5eca962c73014bb9e6209d04652';
 ffApp.flavor = '';
 ffApp.course = "Main Dishes";
 
-//randomnizer
+//randomizer
 
 
 ffApp.init = function(filmName){
@@ -106,18 +106,8 @@ ffApp.flavorByGenre = function(filmGenre){
 	ffApp.searchRecipe();
 };
 
-//I need to pass the flavor mix into ajax data parameter
-//e.g. flavor.salty.min and flavor.salty.max
-//OR...should I find the matched flavor in the matched results based on course 
 
-
-//5. Search recipes by flavor mix
-// ffApp.searchByFlavor = function(){
-
-// };
-
-//6. Set the "allowedCourse[]" parameter to search for the recipe
-// only return recipes with selected course
+//6. search recipe based on course and flavor
 
 ffApp.searchRecipe = function(){
 	$.ajax({
@@ -134,27 +124,72 @@ ffApp.searchRecipe = function(){
 	    	var recipesByCourse = response.matches;
 	    	// //object: results of course match
 	    	console.log(recipesByCourse);
-	    	ffApp.displayRecipe(response);
+	    	// ffApp.displayRecipe(response);
+	    	// ffApp.selectRecipes(recipesByCourse);
+	    	ffApp.displayRecipe(recipesByCourse);
 	    }
 	});
 };
 
+//6.5 randomize results
+//number of search results
+// var totalNumer = 100;
+// var finalNumer = 3; 
+
+// //Array to hold total results
+// var totalResults = [];
+// var finalResults = [];
+
+// ffApp.selectRecipes = function() {
+// 	//select a randomNumber between 0 and n
+// 	function randomNum(n) {
+// 		return Math.floor(Math.random() * n);
+// 	};
+
+// 	//Select a random object from the array
+// 	function selectFromArray() {
+// 		return totalResults[randomNum(totalResults.length)];
+// 	};
+
+// 	//Run loop to add a random result to finalResults array (things to be displayed)
+// 	for(var i = 0; i<numberofResults; i = i) {
+
+// 		//1. select a result from the array 
+// 		var selectedResult = selectFromArray();
+// 		console.log(selectedResult);
+
+// 		//2. check if that result actually has an image available
+// 		if(selectedResult. === null) {
+// 			console.log('has no image');
+// 			// return true;
+// 		}
+// 		//3. If there is an image add it to the final results array and advance the loop
+// 		else {
+// 		finalResults.push(selectedResult);
+// 		i++;
+// 		console.log('selected a result');
+// 		}
+// 	};
+	
+// };
+
+//7. display recipes on page
+
 ffApp.displayRecipe=function(data){
-	// $.each(data, function(i, item){
+	$.each(data, function(i, piece){
+		console.log(piece);
+		var image = $('<img>').attr('src', piece.smallImageUrls[0].replace('=s90',''));
+		var title = $('<p>').text(piece.recipeName);
 
-	// 	//building html - inject h2 with title
-	// 	var title = $('<h2>').text(item.title);
-	// 	var artist = $('<p>').addClass('artist').text(item.principalOrFirstMaker);
-	// 	var image = $('<img>').attr('src', piece.webImage.url);
-	// 	var artPiece = $('<div>').addClass('piece').append(image, title, artist);
-	// 	$('#artwork').append(artPiece);
-	// });
+		var recipePiece = $('<figure>').addClass('recipeContainer').append(image, title);
+		$('#recipe').append(recipePiece);
+	});
 
-	for(var i=0; i<data.matches.length; i++){
-		$('ul').append('<li>' + data.matches[i].recipeName + '</li>');
-		// for(var i=0; i<data.matches.length; i++)
-		$('#recipe').append('<img src=' + data.matches[i].smallImageUrls[0].replace('=s90','') + '>');
-	}
+	// for(var i=0; i<data.matches.length; i++){
+	// 	$('ul').append('<li>' + data.matches[i].recipeName + '</li>');
+	// 	// for(var i=0; i<data.matches.length; i++)
+	// 	$('#recipe').append('<img src=' + data.matches[i].smallImageUrls[0].replace('=s90','') + '>');
+	// }
 };
 
 $(function(){
