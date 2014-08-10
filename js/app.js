@@ -7,18 +7,16 @@ ffApp.flavor = '';
 ffApp.course = "Main Dishes";
 
 //randomizer
+var finalResults = [];
 
 
 ffApp.init = function(filmName){
-
-
 	// empty search field and reset value
 	$('#searchFilm').on('submit', function(){
 		$('#searchBar').val('');
 	});
 
 	ffApp.getID(filmName);
-
 };
 
 //1. Use user input to search database
@@ -36,7 +34,7 @@ ffApp.getID = function(filmName){
 	    dataType: 'json',
 	    success: function(response){
 	    	var filmID = response.results[0].id;
-	    	console.log(filmID);
+	    	// console.log(filmID);
 
 	    	//call getGenre only if get filmID is successful
 	    	ffApp.getGenre(filmID);
@@ -58,7 +56,6 @@ ffApp.getGenre = function(filmID){
 	    	var filmGenre = response.genres[0].id;
 	    	console.log(filmGenre);
 	    	
-
 	    	// only match flavour if getting genre is successful
 	    	ffApp.flavorByGenre(filmGenre);
 	    }
@@ -81,15 +78,15 @@ ffApp.flavorByGenre = function(filmGenre){
 	}
 	//if film is family/animation/holiday/comedy/musical
 	else if (filmGenre === 10751 || filmGenre === 16 || filmGenre === 10595) {
-		ffApp.flavor = '&flavor.sweet.min=0.5&flavor.salty.min=0.5&flavor.meaty.min=0.3&flavor.bitter.max=0.33';
+		ffApp.flavor = '&flavor.sweet.min=0.5&flavor.salty.min=0.5&flavor.meaty.min=0.3&flavor.bitter.max=0.34';
 	}
 	//if film is romance/drama
 	else if (filmGenre === 10749 || filmGenre === 18) {
-		ffApp.flavor = '&flavor.sweet.min=0.5&flavor.salty.min=0.5&flavor.piquant.min=0.3&flavor.bitter.max=0.5&flavor.sour.min=0.5';
+		ffApp.flavor = '&flavor.sweet.min=0.5&flavor.salty.min=0.3&flavor.meaty.min=0.3&flavor.bitter.max=0.5&flavor.sour.min=0.33';
 	}
 	//if film is horror/thriller/mystery/suspense/disaster/crime/film noir
 	else if (filmGenre === 27 || filmGenre === 53 || filmGenre === 9648 || filmGenre === 10748 || filmGenre === 105 || filmGenre === 80 || filmGenre === 10753) {
-		ffApp.flavor = '&flavor.sweet.max=0.33&flavor.salty.min=0.5&flavor.piquant.min=0.3&flavor.bitter.max=0.5&flavor.sour.min=0.5';
+		ffApp.flavor = '&flavor.salty.min=0.5&flavor.piquant.min=0.5';
 	}
 	//if film is history/war
 	else if (filmGenre === 36 || filmGenre === 10752) {
@@ -100,7 +97,7 @@ ffApp.flavorByGenre = function(filmGenre){
 		ffApp.flavor = '&flavor.sweet.min=0.5&flavor.bitter.min=0.5';
 	}
 
-	console.log(ffApp.flavor);
+	// console.log(ffApp.flavor);
 	// var flavorString = ffApp.flavor.toString();
 	// console.log(flavorString);
 	ffApp.searchRecipe();
@@ -116,80 +113,61 @@ ffApp.searchRecipe = function(){
 	    data: {
 	    	_app_id: ffApp.foodId,
 	      	_app_key: ffApp.foodKey,
-	      	maxResult: 5,
+	      	maxResult: 300,
 	      	rating: 5,
 	    },
 	    dataType: 'jsonp',
 	    success: function(response){
+
 	    	var recipesByCourse = response.matches;
-	    	// //object: results of course match
-	    	console.log(recipesByCourse);
-	    	// ffApp.displayRecipe(response);
-	    	// ffApp.selectRecipes(recipesByCourse);
-	    	ffApp.displayRecipe(recipesByCourse);
+	    	// console.log(recipesByCourse);
+
+	    	var totalResults = recipesByCourse;
+	    	function randomNum(n) {
+	    		return Math.floor(Math.random() * n);
+	    	};
+
+	    	//Select a random object from the array
+	    	function selectFromArray() {
+	    		return totalResults[randomNum(totalResults.length)];
+	    	};
+
+
+	    	//Run loop to add a random result to finalResults array (things to be displayed)
+	    	for(var i = 0; i<3; i = i) {
+	    		var selectedResult = selectFromArray();
+	    		console.log(selectedResult);
+	    		// var finalResults = [];
+	    		if (!selectedResult.smallImageUrls) {
+	    			console.log('no image');
+	    			// return true;
+	    		} else {
+	    			i++;
+	    			// console.log(selectedResult);
+	    			finalResults.push(selectedResult);
+	    		}
+	    	};
+	    	// ffApp.displayRecipe(recipesByCourse);
+	    	ffApp.displayRecipe(finalResults);
 	    }
 	});
 };
 
-//6.5 randomize results
-//number of search results
-// var totalNumer = 100;
-// var finalNumer = 3; 
 
-// //Array to hold total results
-// var totalResults = [];
-// var finalResults = [];
-
-// ffApp.selectRecipes = function() {
-// 	//select a randomNumber between 0 and n
-// 	function randomNum(n) {
-// 		return Math.floor(Math.random() * n);
-// 	};
-
-// 	//Select a random object from the array
-// 	function selectFromArray() {
-// 		return totalResults[randomNum(totalResults.length)];
-// 	};
-
-// 	//Run loop to add a random result to finalResults array (things to be displayed)
-// 	for(var i = 0; i<numberofResults; i = i) {
-
-// 		//1. select a result from the array 
-// 		var selectedResult = selectFromArray();
-// 		console.log(selectedResult);
-
-// 		//2. check if that result actually has an image available
-// 		if(selectedResult. === null) {
-// 			console.log('has no image');
-// 			// return true;
-// 		}
-// 		//3. If there is an image add it to the final results array and advance the loop
-// 		else {
-// 		finalResults.push(selectedResult);
-// 		i++;
-// 		console.log('selected a result');
-// 		}
-// 	};
-	
-// };
 
 //7. display recipes on page
 
 ffApp.displayRecipe=function(data){
 	$.each(data, function(i, piece){
-		console.log(piece);
+		// console.log(piece);
 		var image = $('<img>').attr('src', piece.smallImageUrls[0].replace('=s90',''));
 		var title = $('<p>').text(piece.recipeName);
 
-		var recipePiece = $('<figure>').addClass('recipeContainer').append(image, title);
+		// var recipePiece = $('<figure>').addClass('recipeContainer').append(image, title);
+		var recipeLink = $('<a>').attr('href', 'http://www.yummly.com/recipe/' + piece.id).append(image, title);
+		var recipePiece = $('<figure>').addClass('recipeContainer').html(recipeLink);
 		$('#recipe').append(recipePiece);
 	});
-
-	// for(var i=0; i<data.matches.length; i++){
-	// 	$('ul').append('<li>' + data.matches[i].recipeName + '</li>');
-	// 	// for(var i=0; i<data.matches.length; i++)
-	// 	$('#recipe').append('<img src=' + data.matches[i].smallImageUrls[0].replace('=s90','') + '>');
-	// }
 };
 
 $(function(){
@@ -197,6 +175,7 @@ $(function(){
 	$('#searchButton').on('click', function(e){
 		e.preventDefault();
 		// assign user input to filmName
+		finalResults = [];
 		$('#recipe').empty();
 		var filmName = $('#searchBar').val();
 		console.log(filmName);
