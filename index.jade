@@ -4,35 +4,38 @@ head
 	meta(charset="UTF-8")
 	title No More Popcorns
 	link(rel="stylesheet", href="css/style.css")
-	link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css')
+	link(href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800' rel='stylesheet' type='text/css')
 	link(href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet")
+
+
 body
 	header
-		h1 No More Popcorns
-		h2 Find the perfect food for your movie night
+		div.title-container
+			h1 No More Popcorns
+			h2 Find the perfect food for your movie night
 	main
-		div.container
-			label(for='film') What are you watching?
-			form(id='searchFilm', method='get')
-				input(type='text', id='searchBar', placeholder='Enter a movie')
-		div.container
-			label(for='course') Choose a course
-			select(name='course', id='course')
-				option(value="Main Dishes") Main Dishes
-				option(value="Desserts") Desserts
-				option(value="Side Dishes") Side Dishes
-				option(value="Lunch and Snacks") Lunch and Snacks
-				option(value="Appetizers") Appetizers
-				option(value="Salads") Salads
-				//- option(value="Beverages") Beverages
-				//- option(value="Cocktails") Cocktails
-			button(id='searchButton') Thrill Me
-		section.container#recipe
-			
-			// each recipe is wrapped in <> has an class of '.recipeContainer'
-			// '.recipeContainer' contains an img and
-			// name of the recipe ('.caption')
-			// in the long run, it should expand to show entire recipe extracted from yummly
+		section.userInput.clearfix
+			article.film
+				label(for='film') What are you watching?
+				form(id='searchFilm', method='get')
+					input(type='text', id='searchBar', placeholder='Enter a movie')
+			article.course
+				label(for='course') Choose a course
+				br
+				select(name='course', id='course' class='selectpicker')
+					option(value="Main Dishes") Main Dishes
+					option(value="Desserts") Desserts
+					option(value="Side Dishes") Side Dishes
+					option(value="Lunch and Snacks") Lunch and Snacks
+					option(value="Appetizers") Appetizers
+					option(value="Salads") Salads
+					//- option(value="Beverages") Beverages
+					//- option(value="Cocktails") Cocktails
+		section.userInput.button.clearfix
+			button(id='searchButton') Surprise Me
+		section#recipe
+			//the perfect <course> for <movie> are:
+	footer
 
 	script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 	script(type='text/javascript', src="js/app.js")

@@ -1,0 +1,154 @@
+@import '_boiler';
+// @import '_grid.scss';
+
+// ----------------------------------------------------
+// Mixins
+// ----------------------------------------------------
+
+
+@mixin fontify ($fz, $fw, $lh:1em, $td:none) {
+	font-family: 'Raleway','helvetica',sans-serif;
+	font-size: $fz;
+	font-weight: $fw;
+	line-height: $lh;
+	text-decoration: $td;
+}
+
+// @mixin image{
+// 	width: 33.33%;
+// 	float:left;
+// 	position:relative;
+// 	cursor: pointer;
+// 	background-position:center;
+// 	background-size: cover;
+// 	// -webkit-transition: all 0.7s ease-in-out;
+// 	&:before{
+// 		content:'';
+// 		display:block;
+// 		padding-top: 100%;
+// 	}
+// }
+
+
+//colors
+
+$secondaryColor: #497487;
+$food: #F24444;
+
+//body
+
+body,
+html {
+	height: 100%;
+	margin: 0;
+	font-family: 'Raleway', 'Helvetica', sans-serif;
+	background: url(../images/food.png) repeat center;
+}
+
+header {
+	background-color: #7FCDE5;
+	padding: 50px 0;
+	text-align: center;
+}
+
+h1 {
+	margin: 0 auto;
+	@include fontify(55px, 800, 1.5em);
+	color: $food;
+	text-transform: uppercase;
+}
+
+h2 {
+	margin: 0 auto;
+	@include fontify(36px, 300);
+	color: $food;
+}
+
+main {
+	padding:0 20px;
+	// background-color: #B0F5E6;
+}
+
+@mixin forms($wd) {
+	float:left;
+	// margin:0 5%;
+	width:$wd;
+
+}
+
+.userInput {
+	// background-color: yellow;
+	width: 100%;
+	@include fontify(32px, 400, 1.5em);
+	color:#444;
+	.film {
+		@include forms(45%); 
+		margin: 0 2.5% 0 5%;
+		label{
+			font-size: 24px;
+		}
+		form input {
+			margin: 10px auto;
+			padding: 8px 5px;
+			width: 100%;
+			border:none;
+			border-bottom: #f78d8d 2px solid;
+			background: rgba(242,68,68,0.1);
+			&:focus {
+				outline:none;
+			}
+			&::-webkit-input-placeholder {
+				color:(0,0,0,0.5);
+				font-weight: 100;
+			}
+		}
+	}
+	.course {
+		@include forms(40%);
+		margin: 0 5% 0 2.5%;
+		label{
+			font-size: 24px;
+		}
+		select {
+			border:0 !important;
+			border-radius: 0 !important;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			background: rgba(242,68,68,0.1);
+			border-radius: none !important;
+			width: 100%;
+			padding: 10px 5px !important;
+			margin: 10px auto;
+			&:focus {
+				outline:none !important;
+			}
+		}
+	}
+}
+.button {
+	float:left;
+	width: 100%;
+	text-align: center;
+	button {
+		font-size: 28px;
+		font-weight: 300;
+		margin: 15px auto;
+		padding: 10px;
+		width: 90%;
+		background: $food;
+		border:none;
+		&:focus {
+			outline:none;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
