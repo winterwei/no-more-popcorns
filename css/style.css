@@ -134,10 +134,19 @@ html {
   font-family: 'Raleway', 'Helvetica', sans-serif;
   background: url(../images/food.png) repeat center; }
 
+a {
+  text-decoration: none;
+  color: #888; }
+  a:visited {
+    color: #888; }
+  a:hover {
+    color: #333; }
+
 header {
-  background-color: #7FCDE5;
-  padding: 50px 0;
-  text-align: center; }
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px 0;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(242, 68, 68, 0.5); }
 
 h1 {
   margin: 0 auto;
@@ -152,53 +161,58 @@ h1 {
 h2 {
   margin: 0 auto;
   font-family: 'Raleway','helvetica',sans-serif;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 300;
   line-height: 1em;
   text-decoration: none;
   color: #f24444; }
 
 main {
-  padding: 0 20px; }
+  padding: 20px; }
 
 .userInput {
   width: 100%;
   font-family: 'Raleway','helvetica',sans-serif;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 400;
   line-height: 1.5em;
   text-decoration: none;
-  color: #444; }
+  color: #555; }
   .userInput .film {
     float: left;
     width: 45%;
     margin: 0 2.5% 0 5%; }
     .userInput .film label {
-      font-size: 24px; }
+      font-size: 18px;
+      text-transform: uppercase; }
     .userInput .film form input {
       margin: 10px auto;
-      padding: 8px 5px;
+      padding: 10px 5px;
       width: 100%;
       border: none;
-      border-bottom: #f78d8d 2px solid;
-      background: rgba(242, 68, 68, 0.1); }
+      border-bottom: #f24444 2px solid;
+      background: rgba(242, 68, 68, 0.4); }
       .userInput .film form input:focus {
-        outline: none; }
+        outline: none;
+        background: rgba(242, 68, 68, 0.5); }
       .userInput .film form input::-webkit-input-placeholder {
-        color: 0, 0, 0, 0.5;
+        color: rgba(255, 255, 255, 0.6);
         font-weight: 100; }
   .userInput .course {
     float: left;
     width: 40%;
     margin: 0 5% 0 2.5%; }
     .userInput .course label {
-      font-size: 24px; }
+      text-transform: uppercase;
+      font-size: 18px; }
     .userInput .course select {
+      cursor: pointer;
       border: 0 !important;
+      border-bottom: #f24444 2px solid !important;
       border-radius: 0 !important;
       -webkit-appearance: none;
       -moz-appearance: none;
-      background: rgba(242, 68, 68, 0.1);
+      background: rgba(242, 68, 68, 0.4);
       border-radius: none !important;
       width: 100%;
       padding: 10px 5px !important;
@@ -211,12 +225,47 @@ main {
   width: 100%;
   text-align: center; }
   .button button {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 300;
+    color: white;
     margin: 15px auto;
-    padding: 10px;
+    padding: 15px;
     width: 90%;
     background: #f24444;
     border: none; }
+    .button button:active {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #f24444; }
+    .button button:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #f24444;
+      border-bottom: #f24444 2px solid; }
     .button button:focus {
-      outline: none; }
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #f24444; }
+
+#recipe {
+  width: 100%;
+  padding: 5% 5% 0;
+  margin-top: 30px; }
+  #recipe .recipeContainer {
+    background-color: white;
+    margin-right: 2%;
+    float: left;
+    width: 32%;
+    text-align: center;
+    padding-top: 2.5%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+    #recipe .recipeContainer:last-child {
+      margin-right: 0; }
+    #recipe .recipeContainer img {
+      width: 95%;
+      height: 80%; }
+    #recipe .recipeContainer:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-bottom: #f24444 4px solid; }
+
+footer {
+  width: 100%;
+  background-color: #555; }

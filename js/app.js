@@ -70,7 +70,7 @@ ffApp.flavorByGenre = function(filmGenre){
 
 	//if film is action/advanture/science fiction/fantasy
 	if (filmGenre === 28 || filmGenre === 12 || filmGenre === 878 || filmGenre === 14) {
-		ffApp.flavor = '&flavor.salty.min=0.66&flavor.meaty.min=0.66&flavor.piquant.min=0.66';
+		ffApp.flavor = '&flavor.salty.min=0.66&flavor.meaty.min=0.66&flavor.piquant.min=0.5';
 	} 
 	//if film is western/sports/sports film/sporting/road movie
 	else if (filmGenre === 1115 || filmGenre === 37 || filmGenre === 9805 || filmGenre === 10758 || filmGenre === 10757){
@@ -178,8 +178,10 @@ $(function(){
 		finalResults = [];
 		$('#recipe').empty();
 		var filmName = $('#searchBar').val();
-		console.log(filmName);
-		ffApp.init(filmName);	
+		// console.log(filmName);
+		ffApp.init(filmName);
+		$(this).text('ENJOY! OR TRY SOMETHING ELSE');
+
 	});
 	$('#course').on('change', function(){
 		ffApp.course = $(this).val();

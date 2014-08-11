@@ -14,20 +14,6 @@
 	text-decoration: $td;
 }
 
-// @mixin image{
-// 	width: 33.33%;
-// 	float:left;
-// 	position:relative;
-// 	cursor: pointer;
-// 	background-position:center;
-// 	background-size: cover;
-// 	// -webkit-transition: all 0.7s ease-in-out;
-// 	&:before{
-// 		content:'';
-// 		display:block;
-// 		padding-top: 100%;
-// 	}
-// }
 
 
 //colors
@@ -45,10 +31,22 @@ html {
 	background: url(../images/food.png) repeat center;
 }
 
+a {
+	text-decoration: none;
+	color: #888;
+	&:visited {
+		color: #888;
+	}
+	&:hover {
+		color:#333;
+	}
+}
+
 header {
-	background-color: #7FCDE5;
-	padding: 50px 0;
+	background-color: rgba(255, 255, 255 ,0.7);
+	padding: 30px 0;
 	text-align: center;
+	box-shadow: 0 1px 2px rgba(242,68,68,0.5);
 }
 
 h1 {
@@ -60,12 +58,12 @@ h1 {
 
 h2 {
 	margin: 0 auto;
-	@include fontify(36px, 300);
+	@include fontify(32px, 300);
 	color: $food;
 }
 
 main {
-	padding:0 20px;
+	padding:20px;
 	// background-color: #B0F5E6;
 }
 
@@ -79,26 +77,29 @@ main {
 .userInput {
 	// background-color: yellow;
 	width: 100%;
-	@include fontify(32px, 400, 1.5em);
-	color:#444;
+	@include fontify(26px, 400, 1.5em);
+	color:#555;
 	.film {
 		@include forms(45%); 
 		margin: 0 2.5% 0 5%;
 		label{
-			font-size: 24px;
+			font-size: 18px;
+			text-transform: uppercase;
 		}
 		form input {
 			margin: 10px auto;
-			padding: 8px 5px;
+			padding: 10px 5px;
 			width: 100%;
 			border:none;
-			border-bottom: #f78d8d 2px solid;
-			background: rgba(242,68,68,0.1);
+			border-bottom: $food 2px solid;
+			background: rgba(242,68,68,0.4);
 			&:focus {
 				outline:none;
+				background: rgba(242,68,68,0.5);
+
 			}
 			&::-webkit-input-placeholder {
-				color:(0,0,0,0.5);
+				color:rgba(255,255,255,0.6);
 				font-weight: 100;
 			}
 		}
@@ -107,14 +108,17 @@ main {
 		@include forms(40%);
 		margin: 0 5% 0 2.5%;
 		label{
-			font-size: 24px;
+			text-transform: uppercase;
+			font-size: 18px;
 		}
 		select {
+			cursor: pointer;
 			border:0 !important;
+			border-bottom: $food 2px solid !important;
 			border-radius: 0 !important;
 			-webkit-appearance: none;
 			-moz-appearance: none;
-			background: rgba(242,68,68,0.1);
+			background: rgba(242,68,68,0.4);
 			border-radius: none !important;
 			width: 100%;
 			padding: 10px 5px !important;
@@ -130,17 +134,59 @@ main {
 	width: 100%;
 	text-align: center;
 	button {
-		font-size: 28px;
+		font-size: 20px;
 		font-weight: 300;
+		color:white;
 		margin: 15px auto;
-		padding: 10px;
+		padding: 15px;
 		width: 90%;
 		background: $food;
 		border:none;
+		&:active {
+			background-color: rgba(255,255,255,0.5);
+			color:$food;	
+		}
+		&:hover {
+			background-color: rgba(255,255,255,0.5);
+			color:$food;
+			border-bottom: $food 2px solid;
+		}
 		&:focus {
 			outline:none;
+			background-color: rgba(255,255,255,0.5);
+			color:$food;
 		}
 	}
+}
+#recipe {
+	width: 100%;
+	padding: 5% 5% 0;
+	margin-top:30px;
+	.recipeContainer {
+		background-color: white;
+		margin-right:2%;
+		&:last-child{
+			margin-right: 0;
+		}
+		float:left;
+		width: 32%;
+		text-align: center;
+		padding-top: 2.5%;
+		img {
+			width: 95%;
+			height: 80%;
+		}
+		&:hover {
+			background-color: rgba(255,255,255,0.9);
+			border-bottom: $food 4px solid;
+		}
+		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	}
+}
+
+footer {
+	width: 100%;
+	background-color: #555;
 }
 
 
