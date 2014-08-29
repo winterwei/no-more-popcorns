@@ -2,7 +2,7 @@
 html(lang="en")
 head
 	meta(charset="UTF-8")
-	title No More Popcorns
+	title No More Popcorn
 	link(rel="stylesheet", href="css/style.css")
 	link(href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800' rel='stylesheet' type='text/css')
 	link(href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet")
@@ -11,7 +11,7 @@ head
 body
 	header
 		div.title-container
-			h1 No More Popcorns
+			h1 No More Popcorn!
 			h2 Find the perfect food for your movie night
 	main
 		section.userInput.clearfix
@@ -33,9 +33,13 @@ body
 					//- option(value="Cocktails") Cocktails
 		section.userInput.button.clearfix
 			button(id='searchButton') DELIGHT ME
+		section#message.clearfix
 		section#recipe.clearfix
-			//the perfect <course> for <movie> are:
-	footer
+			div#progressbar
+				
+	footer.footer
+		//p This is an ongoing project, find it on 
+			a(href="https://github.com/winterwei/no-more-popcorns") Github
 
 	script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 	script(type='text/javascript', src="js/app.js")

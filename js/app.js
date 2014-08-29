@@ -5,10 +5,21 @@ ffApp.foodId = '785ab478';
 ffApp.foodKey = '8711f5eca962c73014bb9e6209d04652';
 ffApp.flavor = '';
 ffApp.course = "Main Dishes";
+ffApp.filmName = $('#searchBar').val();
 
 //randomizer
 var finalResults = [];
 
+
+
+
+// $('#searchButton').on('click', function(e){
+// 	e.preventDefault();
+// 	finalResults = [];
+// 	$('#recipe').empty();
+// 	// assign user input to filmName
+// 	var filmName = $('#searchBar').val();
+// }):
 
 ffApp.init = function(filmName){
 	// empty search field and reset value
@@ -29,7 +40,7 @@ ffApp.getID = function(filmName){
 	    type: 'GET',
 	    data: {
 	      api_key: ffApp.filmKey,
-	      query: filmName
+	      query: ffApp.filmName
 	    },
 	    dataType: 'json',
 	    success: function(response){
@@ -159,6 +170,7 @@ ffApp.searchRecipe = function(){
 
 ffApp.displayRecipe=function(data){
 	$.each(data, function(i, piece){
+		var message = $('#message').html('<p>After searching high and low, we find the perfect ' + '<span class="courseStyle">' + ffApp.course + '</span>' + ' for ' + '<span class="filmStyle">' + ffApp.filmName + '</span>' + '! Take your pick and enjoy!</p>');
 		// console.log(piece);
 		var image = $('<img>').attr('src', piece.smallImageUrls[0].replace('=s90',''));
 		var title = $('<p>').text(piece.recipeName);
@@ -167,21 +179,32 @@ ffApp.displayRecipe=function(data){
 		var recipeLink = $('<a>').attr('href', 'http://www.yummly.com/recipe/' + piece.id).append(image, title);
 		var recipePiece = $('<figure>').addClass('recipeContainer').html(recipeLink);
 		$('#recipe').append(recipePiece);
+		$('.footer').html('<p>If you like it, check it out on <a href="https://github.com/winterwei/no-more-popcorns">Github</a></p>');
 	});
 };
 
+//trying to make a progress bar while images load
+// ffApp.loadRecipe = function(){
+// 	var loadingBar = $('#progressbar').progressbar({
+// 		value:false;
+// 	});
+	
+// };
+
+
+//function ready
 $(function(){
 	// only call init when user click on the search button
 	$('#searchButton').on('click', function(e){
 		e.preventDefault();
-		// assign user input to filmName
-		$('header').slideUp('easeInOut');
+		// $('header').slideUp('easeInOut');
 		finalResults = [];
 		$('#recipe').empty();
-		var filmName = $('#searchBar').val();
+		// assign user input to filmName
+		ffApp.filmName = $('#searchBar').val();
 		// console.log(filmName);
-		ffApp.init(filmName);
-		$(this).text('ENJOY! OR TRY SOMETHING ELSE');
+		ffApp.init(ffApp.filmName);
+		$(this).text('DELIGHT ME AGAIN');
 
 	});
 	$('#course').on('change', function(){

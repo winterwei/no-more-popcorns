@@ -247,7 +247,7 @@ main {
 
 #recipe {
   width: 100%;
-  padding: 5% 5% 0;
+  padding: 1% 5%;
   margin-top: 30px; }
   #recipe .recipeContainer {
     background-color: white;
@@ -266,6 +266,25 @@ main {
       background-color: rgba(255, 255, 255, 0.9);
       border-bottom: #f24444 4px solid; }
 
-footer {
+#message {
+  clear: both;
+  margin: auto 5%;
+  text-align: center; }
+  #message p {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 8%;
+    color: #f57474; }
+    #message p .courseStyle,
+    #message p .filmStyle {
+      color: #f24444;
+      font-weight: 800; }
+
+footer.footer {
   width: 100%;
-  background-color: #555; }
+  padding: 2%;
+  text-align: center; }
+  footer.footer p {
+    color: #333; }
+    footer.footer p a {
+      color: #f24444; }

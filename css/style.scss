@@ -160,7 +160,7 @@ main {
 }
 #recipe {
 	width: 100%;
-	padding: 5% 5% 0;
+	padding: 1% 5%;
 	margin-top:30px;
 	.recipeContainer {
 		background-color: white;
@@ -183,10 +183,37 @@ main {
 		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 	}
 }
+#message {
+	clear:both;
+	// width: 100%;
+	// margin: 3% 5% 0;
+	margin: auto 5%;
+	text-align: center;
+	// padding-top: 2%;
+	p {
+		font-size: 24px;
+		font-weight: 500;
+		margin-top: 8%;
+		color:lighten($food, 10);
+		.courseStyle,
+		.filmStyle {
+			color:$food;
+			font-weight: 800;
+		}
+	}
+}
 
-footer {
+footer.footer {
 	width: 100%;
-	background-color: #555;
+	padding: 2%;
+	text-align: center;
+	// background-color: #555;
+	p {
+		color: #333;
+		a {
+			color:$food;
+		}
+	}
 }
 
 
